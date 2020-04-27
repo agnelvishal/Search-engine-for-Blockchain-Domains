@@ -1,0 +1,19 @@
+{
+  "name": "cryptoDomainsSearch",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "ethereumjs-tx": "^2.1.1",
+    "mysql": "^2.18.1",
+    "node-fetch": "^2.6.0",
+    "node-mysql": "^0.4.2",
+    "web3": "^1.2.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Agnel Vishal and team",
+  "license": "ISC"
+}
