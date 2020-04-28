@@ -82,21 +82,20 @@ try {
     die('Some Problem: Blame agnelvishal@gmail.com' . mysqli_error($db));
   }
   // Data being fetched for cards
-  $table =  "<div class='picked'> Picked from " . number_format($rows1["count"]) . " articles in " . $site . " </div>";
+  $table =  "<div class='picked'> Picked from " . number_format($rows1["count"]) . " domains in blockchain </div>";
 
   // if ($display == "cardView") {
-if(1)
-{
+  if (1) {
     $table .= '<div class="row">';
 
     while ($rows = mysqli_fetch_assoc($result)) {
       $table .=   '<div class="column"><div class="card">';
 
       $url = "https://gateway.ipfs.io/ipfs/";
-      $url .=$rows["ipfsHash"];
+      $url .= $rows["ipfsHash"];
 
 
-      $table .= '<a target="_blank" href="' . $url. '" >';
+      $table .= '<a target="_blank" href="' . $url . '" >';
       // $table .= '<img alt="Image" class="center-image" src="' . $rows["image"] . '">';
       $table .= '<p class="block-with-text"><span class="avtext">' . preg_replace('/u([a-fA-F0-9]{4})/', '&#x\\1;', $rows["cryptoDomain"]) . '</span></p>';
       $table .= '<div class="container">';
@@ -169,10 +168,9 @@ if(1)
 } catch (Exception $e) {
   echo 'Caught exception: ',  $e->getMessage(), "\n";
 }
-
-echo '<div class="made"><a target="_blank" href="https://www.facebook.com/agnel.vishal" >Made by Agnel Vishal</a> </div>';
-echo '<div class="made"> <a target="_blank" href="https://www.facebook.com/Condensepress-367669160701798"> Connect at Facebook Page</a></div>';
-echo '<div class="made"> <a target="_blank" href="https://github.com/agnelvishal/Condense.press">Source code in Github:NewsDiet</a>.</div>';
+echo '<div class="made"> <a target="_blank" href="https://sarchy.online/"> Made By Sarchy</a></div>';
+echo '<div class="made"><a target="_blank" href="mailto:info@sarchy.online">  Contact us at info@sarchy.online </a> </div>';
+echo '<div class="made"> <a target="_blank" href="https://github.com/agnelvishal/Search-engine-for-Blockchain-Domains-">Source code</a>.</div>';
 echo '<div class="made">   <a target="_blank" href="https://t.me/SearchEnginePlus"> Join Telegram Group </a>.</div>';
 
 ?>
