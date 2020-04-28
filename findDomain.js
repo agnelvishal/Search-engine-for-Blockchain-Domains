@@ -1,4 +1,4 @@
-const toDb = require('./toDb.js')
+const avDb = require('./avDb.js')
 
 const Web3 = require('web3')
 
@@ -22,18 +22,25 @@ function findLast(uri) {
     return uri.substring(uri.lastIndexOf('/') + 1);
 }
 
-async function main(tokenId) {
+async function main() {
 
-    tokenIds = await toDb.fromDb("tokenId");
+
+    tokenIds = await avDb.fromDb("tokenId", "cryptoDomain", true);
 
     // console.log(tokenIds);
     //tokenId = "61496755456578043835531746094064696167887127075058544005615830928899361262013";
     for (i = 1; i < tokenIds.length; i++) {
-        tokenId = tokenIds[i]["tokenId"]
-        const uri = await findURIOfToken(tokenId);
-        domainName = findLast(uri)
+        try {
+            tokenId = tokenIds[i]["tokenId"]
+            const uri = await findURIOfToken(tokenId);
+            domainName = findLast(uri)
 
-        console.log(domainName);
+            console.log(domainName);
+            avDb.toDbUpdate("cryptoDomain", domainName,"tokenId", tokenId)
+        }
+        catch (err) {
+            console.log(err);
+        }
     }
 
 }

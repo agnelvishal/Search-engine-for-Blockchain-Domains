@@ -1,5 +1,6 @@
 'use strict';
 
+//THIS FILE IS NOT USED AS IT CONTAINS BUG. avDb.js FILE IS INSTEAD USED.
 
 var mysql = require('mysql');
 var pool = mysql.createPool({
