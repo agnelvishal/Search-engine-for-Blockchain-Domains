@@ -6,7 +6,7 @@ import articleDateExtractor
 import sys
 from time import sleep
 import concurrent.futures
-
+import json
 
 def article(text):
     try:
@@ -58,11 +58,15 @@ def article(text):
 
 domain = "avDomains"
 
+with open('details.json') as f:
+  data = json.load(f)
+  
+print(data["password"])
 with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
     try:
         # Start the load operations and mark each future with its URL
         mariadb_connection = mariadb.connect(
-            host='127.0.0.1', user='root', password='', database='avSearch')
+            host=data["host"], user='root', password=data["password"], database='avSearch')
         cursor = mariadb_connection.cursor()
         cursor.execute(
             "SELECT ipfsHash FROM `{!s}` where charCount is null and ipfsHash is not null".format(domain))

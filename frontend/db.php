@@ -10,6 +10,12 @@ try {
   $u = "root";
   $p = "";
 
+  $details = file_get_contents("../details.json");
+  $detail = json_decode($details, true);
+  
+  $d = $detail["host"];
+  $p = $detail["password"];
+
 
   //Db connection
   $db = mysqli_connect($d, $u, $p, "avSearch");
