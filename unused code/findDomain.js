@@ -1,5 +1,4 @@
-const toDb = require('./avDb.js')
-
+const avDb = require('../avDb.js')
 
 const Web3 = require('web3')
 
@@ -11,51 +10,41 @@ let contractABI = [{ "inputs": [], "payable": false, "stateMutability": "nonpaya
 YOUR_CONTRACT_ADDRESS = "0xD1E5b0FF1287aA9f9A268759062E4Ab08b9Dacbe"
 
 
-async function main(tokenId) {
+async function findURIOfToken(tokenId) {
     const contract = new web3.eth.Contract(contractABI, YOUR_CONTRACT_ADDRESS);
     // const retVal = await contract.methods.somePureOrViewFunction(arg1, arg2).call();
     //    const varVal = await contract.methods.somePublicVariable().call();
-    const START_BLOCK = 9900000;
-    const END_BLOCK = 10000000;
+    const uri = await contract.methods.tokenURI(tokenId).call();
+    console.log(uri);
     
-    for (i = START_BLOCK; i < END_BLOCK; i = i + 1000) {
-       // console.log(i);
-
-
-        contract.getPastEvents("allEvents",
-            {
-                fromBlock: i,
-                toBlock: i + 1000// You can also specify 'latest'          
-            })
-            .then(events => {
-                //console.log(events);
-                tokenIds=[]
-
-                //console.log("hello             ");
-                for (let key in events) {
-                    var resultVar = events[key].returnValues
-                    // console.log(typeOf(resultVar))
-                   // console.log(resultVar.tokenId);
-                   //console.log(events[key].event);
-
-tokenIds.push([resultVar.tokenId])
-                   //toDb.toDb("tokenId",resultVar.tokenId)
-
-                }
-        //    console.log(tokenIds);
-
-        if(tokenIds.length!=0)
-                 toDb.toDb("tokenId",tokenIds)
-
-
-            })
-            .catch((err) => {console.error(err)
-                console.log("error in findTokenId.js")
-
-            });
-            
-    }
+    return uri
 }
 
+function findLast(uri) {
+    return uri.substring(uri.lastIndexOf('/') + 1);
+}
 
+async function main() {
+
+
+    tokenIds = await avDb.fromDb("tokenId", "cryptoDomain", true);
+
+    // console.log(tokenIds);
+    //tokenId = "61496755456578043835531746094064696167887127075058544005615830928899361262013";
+    for (i = 1; i < tokenIds.length; i++) {
+        try {
+            tokenId = tokenIds[i]["tokenId"]
+            const uri = await findURIOfToken(tokenId);
+            domainName = findLast(uri)
+
+            console.log(domainName);
+            avDb.toDbUpdate("cryptoDomain", domainName,"tokenId", tokenId)
+        }
+        catch (err) {
+            console.log(err);
+        }
+    }
+
+}
 main()
+// findURIOfToken("32298284427991767772992909775813808556833499375018345446495639364349398362553")

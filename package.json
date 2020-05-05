@@ -4,6 +4,7 @@
   "description": "",
   "main": "app.js",
   "dependencies": {
+    "ethereum-input-data-decoder": "^0.3.0",
     "ethereumjs-tx": "^2.1.1",
     "mysql": "^2.18.1",
     "node-fetch": "^2.6.0",

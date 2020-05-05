@@ -1,13 +1,11 @@
 'use strict';
+const details = require('./details.js');
+const connectionD = details.connectionD
+
 
 function toDb(columnName, tokenId) {
     var mysql = require('mysql');
-    var connection = mysql.createConnection({
-        host: 'localhost',
-        user: 'root',
-        password: '',
-        database: 'avSearch'
-    })
+    var connection = mysql.createConnection(connectionD)
     try {
 
         connection.connect()
@@ -25,20 +23,15 @@ function toDb(columnName, tokenId) {
     }
 }
 
-function toDbUpdate(updateColumnName, values,whereColumnName, whereC) {
+function toDbUpdate(updateColumnName, values, whereColumnName, whereC) {
     var mysql = require('mysql');
-    var connection = mysql.createConnection({
-        host: 'localhost',
-        user: 'root',
-        password: '',
-        database: 'avSearch'
-    })
+    var connection = mysql.createConnection(connectionD)
     try {
 
         connection.connect()
-        let sql = 'UPDATE avDomains SET '+updateColumnName+' = ? where '+whereColumnName+' = ?'
-     //   console.log(updateColumnName, values, whereC);
-        
+        let sql = 'UPDATE avDomains SET ' + updateColumnName + ' = ? where ' + whereColumnName + ' = ?'
+        //   console.log(updateColumnName, values, whereC);
+
         connection.query(sql, [values, whereC], function (err) {
             if (err) {
                 //console.log("error in db insert")
@@ -53,33 +46,25 @@ function toDbUpdate(updateColumnName, values,whereColumnName, whereC) {
     }
 }
 
-function fromDb(columnName,columnName2, bool) {
+function fromDb(columnName, columnName2, bool) {
     return new Promise((resolve, reject) => {
         var mysql = require('mysql');
-        var connection = mysql.createConnection({
-            host: 'localhost',
-            user: 'root',
-            password: '',
-            database: 'avSearch'
-        })
+        var connection = mysql.createConnection(connectionD)
         try {
-let isNull;
-if (bool)
-{
-    isNull = " is NULL"
-}
-else
-{
-    isNull = " is not NULL"
+            let isNull;
+            if (bool) {
+                isNull = " is NULL"
+            }
+            else {
+                isNull = " is not NULL"
 
-}
-
-            let sql = `select ` + columnName + `  from avDomains where ` + columnName+ ` is not null and `+columnName2 + isNull;
+            }
+            let sql = `select ` + columnName + `  from avDomains where ` + columnName + ` is not null and ` + columnName2 + isNull;
             // console.log(sql);
-            
+
             connection.connect()
             connection.query(sql, function (err, result) {
-               // console.log(result)
+                // console.log(result)
                 if (err) {
                     //console.log("error in db insert")
                     console.log(err)

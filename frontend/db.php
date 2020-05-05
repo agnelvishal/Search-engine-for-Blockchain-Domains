@@ -75,7 +75,7 @@ try {
 
   $item_select = "SELECT ipfsHash,cryptoDomain FROM `" . $site . "`" . $whereDateClause . " order by defaultPopularity desc limit " . $limitStart . "," . $limitCount;
 
-  echo $item_select;
+  // echo $item_select;
 
   $result = mysqli_query($db, $item_select);
   if (!$result) {
