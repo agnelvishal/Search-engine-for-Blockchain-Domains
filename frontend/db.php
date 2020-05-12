@@ -2,19 +2,19 @@
 try {
 
   //Diagnosis
-  //  ini_set("display_errors",1);
-  //error_reporting(E_ALL);
+  ini_set("display_errors", 1);
+  error_reporting(E_ALL);
 
   // Database details
   $d = "127.0.0.1";
   $u = "root";
   $p = "";
 
-  $details = file_get_contents("../details.json");
-  $detail = json_decode($details, true);
-  
-  $d = $detail["host"];
-  $p = $detail["password"];
+  // $details = file_get_contents("../details.json");
+  // $detail = json_decode($details, true);
+
+  // $d = $detail["host"];
+  // $p = $detail["password"];
 
 
   //Db connection
@@ -68,8 +68,8 @@ try {
 
 
   $item_select1 = "SELECT count(*) as count FROM `" . $site . "`" . $whereDateClause;
-
-  // echo $item_select1;
+  echo "ssssssssss";
+  echo $item_select1;
   $result1 = mysqli_query($db, $item_select1);
   if (!$result1) {
     die('<div class="picked">Some problem : Consider sending a screenshot to agnelvishal@gmail.com </div>' . mysqli_error($db));
@@ -180,19 +180,3 @@ echo '<div class="made"> <a target="_blank" href="https://github.com/agnelvishal
 echo '<div class="made">   <a target="_blank" href="https://t.me/SearchEnginePlus"> Join Telegram Group </a>.</div>';
 
 ?>
-
-<script>
-  if (userSession.isUserSignedIn()) {
-    console.log("s1");
-    var buttons = document.getElementsByClassName('upvote');
-    for (var i = 0; i < buttons.length; i++) {
-      buttons[i].style.display = "block";
-    }
-  } else if (userSession.isSignInPending()) {
-    console.log("s2");
-    var buttons = document.getElementsByClassName('upvote');
-    for (var i = 0; i < buttons.length; i++) {
-      buttons[i].style.display = "block";
-    }
-  }
-</script>
