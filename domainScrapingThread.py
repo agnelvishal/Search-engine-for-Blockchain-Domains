@@ -16,7 +16,7 @@ def article(text):
     try:
         try:
             ipfsHash = text[0]
-            
+
             url = "https://gateway.ipfs.io/ipfs/" + ipfsHash
           #  print(url)
             article = Article(url)
@@ -29,10 +29,12 @@ def article(text):
                 sleep(1)
                 slept += 1
             article.parse()
-            article.nlp()
-            print(article.summary[:400])
+            # article.nlp()
+            # print(article.summary[:400])
+
             mariadb_connectionT = mariadb.connect(
-                host='127.0.0.1', user='root', password='', database='avSearch')
+                host=dbData["host"], user='root', password=dbData["password"], database='avSearch')
+
             cursor = mariadb_connectionT.cursor()
 
             img = article.top_image
@@ -55,7 +57,7 @@ def article(text):
             print("Type Error", url)
             print(err)
         except ArticleException:
-            #print("Article exception", url)
+            print("Article exception", url)
             return
     finally:
         if cursor:
@@ -66,14 +68,13 @@ def article(text):
 domain = "avDomains"
 
 with open('details.json') as f:
-    data = json.load(f)
+    dbData = json.load(f)
 
-print(data["password"])
 with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
     try:
         # Start the load operations and mark each future with its URL
         mariadb_connection = mariadb.connect(
-            host=data["host"], user='root', password=data["password"], database='avSearch')
+            host=dbData["host"], user='root', password=dbData["password"], database='avSearch')
         cursor = mariadb_connection.cursor()
         cursor.execute(
             "SELECT ipfsHash FROM `{!s}` where ipfsHash is not null".format(domain))
