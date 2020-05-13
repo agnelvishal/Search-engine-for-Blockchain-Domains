@@ -125,7 +125,7 @@
  .block-with-text {
   display:block;
   text-align:center;
-  /* margin:-4px 0 0; */
+  margin:-4px 0 0;
   overflow:auto;
   text-overflow:ellipsis;
   width:100%;

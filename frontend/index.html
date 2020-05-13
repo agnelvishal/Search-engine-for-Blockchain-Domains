@@ -7,14 +7,12 @@
   <meta charset="utf-8">
   <title>Sarchy: A search engine for Blockchain Domains.</title>
   <!-- Search Engine -->
-  <meta name="description"
-    content=" Decentralized and customizable search engine">
+  <meta name="description" content=" Decentralized and customizable search engine">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="News Diet">
-  <meta name="twitter:description"
-    content="Decentralized and customizable search engine">
+  <meta name="twitter:description" content="Decentralized and customizable search engine">
   <meta name="twitter:creator" content="@agnelvishal">
 
   <meta name="og:title" content="Pick popular articles">
@@ -81,14 +79,6 @@
    -->
   <script src="registerService.js">  </script>
 
-  <!-- <script>(function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));</script> -->
-
 </head>
 
 
@@ -121,7 +111,7 @@
 
       </span>
       <div id="avoption" style="display :None">
-        <span>Containing <input type="search" id="search" name="search" value="open source">.</span>
+        <span>Containing <input type="search" id="search" name="search" >.</span>
       </div>
 
       <div>Search options <select id="advanced" name="advanced">
@@ -141,9 +131,33 @@
     </div>
   </form>
 
-  <div id="iframe-container">
+  <div class="row" id="row"></div>
+  <template id="template">
+    <div class="column">
+      <div class="card">
+        <a target="_blank">
+          <h6> </h6>
+          <p class="block-with-text"><span class="avtext"></span></p>
+          <div class="container">
+            <div class="totalPopularity"> </div>
+            <div class="meta">
+              <div class="meta-item searchEngine">
+                <p class="label ">Search Engine Popularity:</p>
+                <p></p>
+              </div>
 
-  </div>
+              <div class="meta-item reddit">
+                <p class="label">Reddit popularity:</p>
+                <p>Yet to find</p>
+              </div>
+
+            </div>
+          </div>
+        </a></div>
+
+    </div>
+    </div>
+  </template>
 
   <!-- 
   <div class="center">
@@ -155,12 +169,7 @@
   <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
   <script defer src="./js/loadArticles.js"></script>
-  <script>
-    document.querySelector("#dateSelect").addEventListener('change', function () { if (this.value == "custom") { document.querySelector("#customid").style.display = ""; } else { document.querySelector("#customid").style.display = "None"; } });
-    document.querySelector("#site").addEventListener('change', function () { if (this.value == "others") { document.querySelector("#siteText").style.display = ""; document.querySelector("#email").style.display = ""; } else { document.querySelector("#siteText").style.display = "None"; document.querySelector("#email").style.display = "None" } });
 
-
-  </script>
 
   <!-- <script>document.addEventListener("click", function () { document.documentElement.requestFullscreen(); }, { once: true }); </script> -->
 

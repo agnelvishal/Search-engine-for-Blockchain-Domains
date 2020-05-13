@@ -1,27 +1,36 @@
-function loadArticles(event) {
+async function loadArticles(event) {
 
     document.querySelector("#loading").style.display = "";
     // document.querySelector("#loading").style.animation = "";
     document.querySelector("#loaded").style.display = "None";
     document.querySelector("#button").style.visibility = "hidden";
 
-    var request = $.ajax({
-        type: "GET",
-        url: "db.php",
+    const apiC = await fetch("http://localhost:3000/api/all");
+    
+    const apiD = await apiC.json();
+    const results = apiD.results;
 
-        data: $("#req").serialize(),
-        dataType: "html"
-    });
+    document.querySelector("#loading").style.display = "None";
+    document.querySelector("#loaded").style.display = "";
 
-    $.when(request).done(function (html) {
-        // document.querySelector("#loading").style.animation = "fadein 5s";
-        document.querySelector("#loading").style.display = "None";
-        document.querySelector("#loaded").style.display = "";
+    var i = 0
+    for (let result of results) {
 
-        $("#iframe-container").html(html);
-    }).fail(function (response) {
-        $("#iframe-container").html("<p>Failed to load articles.Blame agnelvishal@gmail.com</p>");
-    });
+        var template = document.querySelector('#template');
+        var clone = document.importNode(template.content, true);
+        clone.querySelector("a").id = i
+
+        clone.querySelector("a").href = "https://cloudflare-ipfs.com/ipfs/" +result.ipfsHash
+        clone.querySelector(".avtext").textContent = result.domainTitle
+
+         clone.querySelector(".totalPopularity").textContent = result.defaultPopularity
+
+        var host = document.querySelector('#row');
+        host.appendChild(clone);
+        i++
+    }
+
+
 }
 
 $(document).ready(function () {
