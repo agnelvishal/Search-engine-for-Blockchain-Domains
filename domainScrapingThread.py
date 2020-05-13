@@ -69,7 +69,7 @@ with open('details.json') as f:
     data = json.load(f)
 
 print(data["password"])
-with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
+with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
     try:
         # Start the load operations and mark each future with its URL
         mariadb_connection = mariadb.connect(
