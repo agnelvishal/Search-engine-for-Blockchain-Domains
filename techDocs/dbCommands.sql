@@ -22,3 +22,15 @@ create table avDomains
         unique (tokenId)
 );
 
+
+update avDomains set  defaultPopularity=charCount+imgCount/4;
+
+-- CREATE TRIGGER insert_trigger
+-- BEFORE INSERT ON yourtable
+-- FOR EACH ROW
+-- SET new.combined = CONCAT(new.zipcode, ' - ', new.city, ', ', new.state);
+
+-- CREATE TRIGGER update_trigger
+-- BEFORE UPDATE ON yourtable
+-- FOR EACH ROW
+-- SET new.combined = CONCAT(new.zipcode, ' - ', new.city, ', ', new.state);

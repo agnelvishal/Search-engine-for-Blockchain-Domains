@@ -25,65 +25,19 @@
   <meta name="og:type" content="website">
   <meta property="og:image" content="https://www.condense.press/css/images/logo.png" />
 
-  <link rel="icon" type="image/png" href="css/images/favicon-32x32.png" sizes="32x32" />
-  <link rel="icon" type="image/png" href="css/images/favicon-16x16.png" sizes="16x16" />
-  <link rel="manifest" href="manifest.json">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/card.css">
+  <!-- <link rel="icon" type="image/png" href="css/images/favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="css/images/favicon-16x16.png" sizes="16x16" /> -->
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="card.css">
   <!-- <link rel="stylesheet" href="css/extra.css"> -->
   <link href="https://fonts.googleapis.com/css?family=Ubuntu:400" rel="stylesheet">
-
-
-  <!-- <script src="https://code.highcharts.com/highcharts.js"></script>
-  <script src="https://code.highcharts.com/highcharts-more.js"></script> -->
-
-  <!-- Matomo -->
-  <!-- <script>
-    var _paq = _paq || [];
-    /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-    _paq.push(['trackPageView']);
-    _paq.push(['enableLinkTracking']);
-    (function () {
-      var u = "//condense.press/analytics/piwik/";
-      _paq.push(['setTrackerUrl', u + 'piwik.php']);
-      _paq.push(['setSiteId', '1']);
-      var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
-      g.type = 'text/javascript'; g.async = true; g.defer = true; g.src = u + 'piwik.js'; s.parentNode.insertBefore(g, s);
-    })();
-  </script>
-  End Matomo Code -->
-
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-47293504-7"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', 'UA-47293504-7');
-  </script> -->
-
-
-
-  <!-- Hotjar Tracking Code for http://condense.press/
-  <script>
-    (function (h, o, t, j, a, r) {
-      h.hj = h.hj || function () { (h.hj.q = h.hj.q || []).push(arguments) };
-      h._hjSettings = { hjid: 1135612, hjsv: 6 };
-      a = o.getElementsByTagName('head')[0];
-      r = o.createElement('script'); r.async = 1;
-      r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
-      a.appendChild(r);
-    })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
-  </script>
-   -->
-  <script src="registerService.js">  </script>
 
 </head>
 
 
 <body class="light">
-  <div class="topnav"> <img alt="logo" src="css/logoColor120.png" width="40" height="40">
+  <div class="topnav"> <img alt="logo" src="logoColor120.png" width="40" height="40">
     <a href="https://www.condense.press/blog?ref=main"> Blog↗</a>
 
   </div>
@@ -159,27 +113,16 @@
     </div>
   </template>
 
-  <!-- 
-  <div class="center">
-    <input id="switch" type="checkbox"/>
-    <div class="wrap">
-      <label for="switch"><span class="rib"></span><span class="rib"></span><span class="rib"></span></label>
-    </div>
-  </div> -->
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-  <script defer src="./js/loadArticles.js"></script>
+  <script defer src="loadArticles.js"></script>
 
-
-  <!-- <script>document.addEventListener("click", function () { document.documentElement.requestFullscreen(); }, { once: true }); </script> -->
-
-  <!-- <script> var avswitch=document.querySelector("#switch"); avswitch.addEventListener('change', function (){if(avswitch.checked){document.body.classList.add('dark');document.body.classList.remove('light');}else{document.body.classList.add('light');document.body.classList.remove('dark');}}); </script> -->
   <script> var avadvanced = document.querySelector("#advanced"); avadvanced.addEventListener('change', function () { if (avadvanced.value == "are") { document.querySelector("#avoption").style.display = ""; } else { document.querySelector("#avoption").style.display = "None"; } });
 
     var url_string = window.location.href;
     var url = new URL(url_string);
-    var site = url.searchParams.get("site");
-    if (site) { document.querySelector("#site").value = site; }
+
     var keyword = url.searchParams.get("keyword");
     if (keyword) {
       document.querySelector("#advanced").value = "are";
