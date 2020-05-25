@@ -25,7 +25,7 @@ async function main() {
             let owner = json.meta.owner
             let eth = json.addresses.ETH
             let type = json.meta.type
-            let whoIs = json.whois
+            let whoIs = json.whois.email
 
 
 
