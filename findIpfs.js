@@ -25,6 +25,7 @@ async function main() {
             let owner = json.meta.owner
             let eth = json.addresses.ETH
             let type = json.meta.type
+            let whoIs = json.whois
 
 
 
@@ -32,6 +33,7 @@ async function main() {
             avDb.toDbUpdate("tokenOwnerAddress", owner, "cryptoDomain", cryptoDomain)
             avDb.toDbUpdate("ethRedirectAddress", eth, "cryptoDomain", cryptoDomain)
             avDb.toDbUpdate("domainType", type, "cryptoDomain", cryptoDomain)
+            avDb.toDbUpdate("whoIs", whoIs, "cryptoDomain", cryptoDomain)
 
         }
         // avDb.toDbUpdate("cryptoDomain", ipfs, cryptoDomain)
