@@ -24,7 +24,7 @@ pylama==7.6.6
 pylint==2.2.2
 PySocks==1.6.8
 python-dateutil==2.7.5
-PyYAML==3.13
+PyYAML==5.1
 requests==2.20.1
 requests-file==1.4.3
 singledispatch==3.4.0.3
