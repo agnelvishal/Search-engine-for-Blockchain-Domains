@@ -38,7 +38,6 @@ urllib3==1.24.1
 wrapt==1.10.11
 mysql==0.0.2
 mysql-connector==2.2.9
-mysqlclient==1.4.5
 networkx==2.3
 newspaper3k==0.2.8
 numpy==1.17.0
