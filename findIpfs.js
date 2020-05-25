@@ -12,13 +12,13 @@ async function main() {
 
         try {
             cryptoDomain = cryptoDomains[i]["cryptoDomain"]
-           // process.stdout.write(i+" ");
+            // process.stdout.write(i+" ");
 
             const apiC = await fetch("https://unstoppabledomains.com/api/v1/" + cryptoDomain);
             const json = await apiC.json()
             //  console.log(json);
-//             if (json.ipfs.html === undefined)
-// console.log(json);
+            //             if (json.ipfs.html === undefined)
+            // console.log(json);
 
 
             let ipfs = json.ipfs.html
@@ -26,8 +26,7 @@ async function main() {
             let eth = json.addresses.ETH
             let type = json.meta.type
             let whoIs = json.whois.email
-
-
+            if (whoIs == null) { whoIS = "" }
 
             avDb.toDbUpdate("ipfsHash", ipfs, "cryptoDomain", cryptoDomain)
             avDb.toDbUpdate("tokenOwnerAddress", owner, "cryptoDomain", cryptoDomain)
