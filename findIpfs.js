@@ -12,7 +12,7 @@ async function main() {
 
         try {
             cryptoDomain = cryptoDomains[i]["cryptoDomain"]
-            process.stdout.write(i+" ");
+           // process.stdout.write(i+" ");
 
             const apiC = await fetch("https://unstoppabledomains.com/api/v1/" + cryptoDomain);
             const json = await apiC.json()
