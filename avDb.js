@@ -80,11 +80,40 @@ function fromDb(columnName, columnName2, bool) {
     })
 }
 
+
+function fromDbAll() {
+    return new Promise((resolve, reject) => {
+        var mysql = require('mysql');
+        var connection = mysql.createConnection(connectionD)
+        try {
+
+            let sql = `select *  from avDomains `;
+            // console.log(sql);
+
+            connection.connect()
+            connection.query(sql, function (err, result) {
+                // console.log(result)
+                if (err) {
+                    //console.log("error in db insert")
+                    console.log(err)
+                }
+                resolve(result);
+            }
+            )
+        }
+        finally {
+            //   console.log("end");
+            connection.end();
+        }
+    })
+}
+
 //toDb("000","dd")
 //fromDb("tokenId")
 // toDbUpdate("cryptoDomain","s","88539541537393697097623643676480575968407953971710600344101980240828304263242")
 
 exports.toDb = toDb
 exports.fromDb = fromDb
+exports.fromDbAll = fromDbAll
 exports.toDbUpdate = toDbUpdate
 

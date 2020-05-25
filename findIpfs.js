@@ -4,7 +4,8 @@ const avDb = require('./avDb.js')
 
 async function main() {
 
-    cryptoDomains = await avDb.fromDb("cryptoDomain", "tokenOwnerAddress", true);
+    cryptoDomains = await avDb.fromDb();
+    // cryptoDomains = await avDb.fromDb("cryptoDomain", "tokenOwnerAddress", true);
     //console.log(cryptoDomains);
 
     for (i = 1; i < cryptoDomains.length; i++) {
@@ -22,7 +23,7 @@ async function main() {
 
             let ipfs = json.ipfs.html
             let owner = json.meta.owner
-            let eth = json.addresses.eth
+            let eth = json.addresses.ETH
             let type = json.meta.type
 
 
