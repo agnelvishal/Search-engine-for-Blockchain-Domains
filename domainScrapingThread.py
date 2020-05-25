@@ -8,6 +8,7 @@ from time import sleep
 import concurrent.futures
 import json
 from newspaper import Config, Article, Source
+from bs4 import BeautifulSoup
 # config = Config()
 # config.MAX_SUMMARY = 1000
 
@@ -31,22 +32,21 @@ def article(text):
             article.parse()
             # article.nlp()
             # print(article.summary[:400])
+            img = article.top_image
+            soup = BeautifulSoup(article.html)
+            outLinks = len(soup.find_all('a', href=True))
 
             mariadb_connectionT = mariadb.connect(
                 host=dbData["host"], user='root', password=dbData["password"], database='avSearch')
 
             cursor = mariadb_connectionT.cursor()
 
-            img = article.top_image
-
             if img:
-                # cursor.execute("UPDATE `{!s}` set image = {!a} , charCount='{:d}',wordCount='{:d}',entropy='{:d}',stopWords='{:d}',titleCount='{:d}', imgCount = '{:d}', title={!a},  where url='{!s}'".format(
-                #     domain, img, len(article.text), article.totalWords, article.entropyN, article.stopWords, len(article.title), len(article.imgs), article.title, url))
-                cursor.execute("UPDATE `{!s}` set imgLink = {!a} , imgCount = '{:d}', charCount='{:d}', domainTitle={!a}  where ipfsHash='{!s}'".format(
-                    domain, img, len(article.text), len(article.imgs), article.title, ipfsHash))
+                cursor.execute("UPDATE `{!s}` set imgLink = {!a} , imgCount = '{:d}', charCount='{:d}', outLinksCount='{:d}', domainTitle={!a}  where ipfsHash='{!s}'".format(
+                    domain, img, len(article.imgs), len(article.text),outLinks,  article.title, ipfsHash))
             else:
-                cursor.execute("UPDATE `{!s}` set charCount='{:d}', domainTitle={!a} where ipfsHash='{!s}'".format(
-                    domain, len(article.text),  article.title, ipfsHash))
+                cursor.execute("UPDATE `{!s}` set charCount='{:d}',outLinksCount='{:d}', domainTitle={!a} where ipfsHash='{!s}'".format(
+                    domain, len(article.text), outLinks,  article.title, ipfsHash))
             mariadb_connectionT.commit()
         except mariadb.Error as err:
             print("db error", err)

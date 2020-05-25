@@ -31,7 +31,9 @@
   flex-direction:column;
   justify-content:center;
   align-items:center;
-  height:100%
+  height:100%;
+  background-color:#fff
+
  }
  .light .card {
   box-shadow:0 4px 6px 0 hsla(0,0%,0%,.2)
@@ -136,7 +138,7 @@
  .light .block-with-text {
   height:10rem;
   color:#000;
-  background-color:rgba(235,235,235,.5)
+  /* background-color:rgba(235,235,235,.5) */
  }
  .dark .block-with-text {
   position:absolute;
@@ -164,7 +166,6 @@
  }
  .made a {
   margin:2px;
-rgba(2,50,200,1);
   text-decoration:none
  }
  

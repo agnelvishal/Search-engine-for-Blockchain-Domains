@@ -39,23 +39,13 @@
 <body class="light">
   <div class="topnav"> <img alt="logo" src="logoColor120.png" width="40" height="40">
     <a href="https://www.condense.press/blog?ref=main"> Blog↗</a>
+    <a href="https://bit.ly/blockchaindomainsreferral"> Get your blockdomain domian here ↗</a>
 
   </div>
-
   <form id="req" action="javascript:void(0);">
+    <input type="hidden" id="pageNo" name="pageNo" value="0">
     <h4>
-      Here are top <input type="number" name="limit" value="10" min="1"> Blockchain domains of
-
-      <input type="search" autocomplete="url" id="siteText" name="siteText" placeholder="website name"
-        style="display :None" required>
-
-      sorted by popularity
-
-
-      <span id="email" style="display :None"> Your e-mail id is <input type="email" name="email"
-          placeholder="Enter your email" autocomplete="email" required> </span>
-
-      <!--       <span>. Skip first <input type="number" name="limitStart" value="0"> articles </span> -->
+      Here are top IPFS websites sorted by popularity.
 
       <!-- <span> Display as
         <select name="display">
@@ -64,18 +54,16 @@
         </select> -->
 
       </span>
-      <div id="avoption" style="display :None">
-        <span>Containing <input type="search" id="search" name="search" >.</span>
+      <div id="avoption">
+        <span>Search for <input type="search" id="search" name="search">.</span>
       </div>
 
-      <div>Search options <select id="advanced" name="advanced">
-          <option value="are">are</option>
-          <option value="are not" selected>are not</option>
-        </select> shown</div>
+
     </h4>
 
 
-    <div id="buttonGroup"> <input type="submit" value="Load Articles" id="button"> <label for="button"
+    <div id="buttonGroup"> 
+      <input type="submit" value="Load Articles" id="button"> <label for="button"
         id="loading">Loading
         <span class="spinner">
           <div class="cube1"></div>
@@ -84,6 +72,8 @@
       <label for="button" id="loaded" display="None"> Loaded. </label>
     </div>
   </form>
+
+  <div class="picked"> Picked from 45,978 websites in unstoppable domains and other IPFS sources </div>
 
   <div class="row" id="row"></div>
   <template id="template">
@@ -95,13 +85,13 @@
           <div class="container">
             <div class="totalPopularity"> </div>
             <div class="meta">
-              <div class="meta-item searchEngine">
-                <p class="label ">Search Engine Popularity:</p>
+              <div class="meta-item charCount">
+                <p class="label ">Charachter Count</p>
                 <p></p>
               </div>
 
-              <div class="meta-item reddit">
-                <p class="label">Reddit popularity:</p>
+              <div class="meta-item imgCount">
+                <p class="label">Image Count</p>
                 <p>Yet to find</p>
               </div>
 
@@ -118,19 +108,11 @@
 
   <script defer src="loadArticles.js"></script>
 
-  <script> var avadvanced = document.querySelector("#advanced"); avadvanced.addEventListener('change', function () { if (avadvanced.value == "are") { document.querySelector("#avoption").style.display = ""; } else { document.querySelector("#avoption").style.display = "None"; } });
 
-    var url_string = window.location.href;
-    var url = new URL(url_string);
 
-    var keyword = url.searchParams.get("keyword");
-    if (keyword) {
-      document.querySelector("#advanced").value = "are";
-      document.querySelector("#search").value = keyword;
-      document.querySelector("#avoption").style.display = "";
-    }
-  </script>
-
+  <div class="topnav loadMore">
+    <a id="loadMore"> Load more </a>
+  </div>
 
 </body>
 
