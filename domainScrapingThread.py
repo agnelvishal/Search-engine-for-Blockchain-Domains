@@ -2,7 +2,7 @@
 from newspaper import Article
 import mysql.connector as mariadb
 from newspaper.article import ArticleException, ArticleDownloadState
-import articleDateExtractor
+# import articleDateExtractor
 import sys
 from time import sleep
 import concurrent.futures
