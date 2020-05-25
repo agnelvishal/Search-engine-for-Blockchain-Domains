@@ -26,13 +26,14 @@ async function main() {
             let eth = json.addresses.ETH
             let type = json.meta.type
             let whoIs = json.whois.email
-            if (whoIs == null) { whoIS = "" }
+            if (whoIs != null) {
+                avDb.toDbUpdate("whoIs", whoIs, "cryptoDomain", cryptoDomain)
+            }
 
             avDb.toDbUpdate("ipfsHash", ipfs, "cryptoDomain", cryptoDomain)
             avDb.toDbUpdate("tokenOwnerAddress", owner, "cryptoDomain", cryptoDomain)
             avDb.toDbUpdate("ethRedirectAddress", eth, "cryptoDomain", cryptoDomain)
             avDb.toDbUpdate("domainType", type, "cryptoDomain", cryptoDomain)
-            avDb.toDbUpdate("whoIs", whoIs, "cryptoDomain", cryptoDomain)
 
         }
         // avDb.toDbUpdate("cryptoDomain", ipfs, cryptoDomain)
