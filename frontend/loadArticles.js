@@ -16,10 +16,10 @@ async function loadArticles(event, pagination) {
     document.querySelector("#loading").style.display = "";
     // document.querySelector("#loading").style.animation = "";
     document.querySelector("#loaded").style.display = "None";
-     document.querySelector("#button").style.visibility = "hidden";
+    document.querySelector("#button").style.visibility = "hidden";
 
-    // const apiC = await fetch("https://apiIpfs.sarchy.online/api/all");
-    const apiC = await fetch("http://localhost:3000/api/all", {
+    // const apiC = await fetch("http://localhost:3000/api/all", {
+    const apiC = await fetch("https://apiIpfs.sarchy.online/api/all", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
@@ -36,7 +36,7 @@ async function loadArticles(event, pagination) {
     document.querySelector("#loaded").style.display = "";
 
     document.querySelector("#loadMore").style.visibility = "visible";
-    document.querySelector("body > div.picked").style.display="block"
+    document.querySelector("body > div.picked").style.display = "block"
 
 
     var i = 0
@@ -52,6 +52,7 @@ async function loadArticles(event, pagination) {
         clone.querySelector(".totalPopularity").textContent = result.defaultPopularity
         clone.querySelector(".charCount  > p:nth-child(2) ").textContent = result.charCount
         clone.querySelector(".imgCount  > p:nth-child(2) ").textContent = result.imgCount
+        clone.querySelector(".outLinksCount  > p:nth-child(2) ").textContent = result.outLinksCount
 
 
         var host = document.querySelector('#row');
@@ -70,7 +71,7 @@ async function loadIpfsApi() {
     const apiD = await apiC.json();
     const results = apiD.hits;
 
-    document.querySelector("body > div.picked").style.display="block"
+    document.querySelector("body > div.picked").style.display = "block"
 
     var i = 0
     for (let result of results) {

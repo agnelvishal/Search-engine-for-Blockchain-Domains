@@ -26,7 +26,7 @@ async function main() {
             let eth = json.addresses.ETH
             let type = json.meta.type
             let whoIs = json.whois.email
-            if (whoIs != null) {
+            if (whoIs != null || whoIs != "") {
                 avDb.toDbUpdate("whoIs", whoIs, "cryptoDomain", cryptoDomain)
             }
 
