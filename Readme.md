@@ -1,20 +1,15 @@
 ## 4 parts of search engine. 
 
- 1. Crawling
+ 1. Crawling - Get domain names from unstoppabledomains Ethereum and Zil blockchain. For crawling IPFS pages, Yacy 2 is used. Scrappy and apache nutch were considered. 
 
-Get domain names from unstoppabledomains Ethereum and Zil blockchain. For crawling IPFS pages, Yacy 2 is used. Scrappy and apache nutch were considered. 
-
- 2. Assessing popularity of domain. 
-
-Standard page rank like techniques using backlinks and social media popularity. 
+ 2. Assessing popularity of domain. - Standard page rank like techniques using backlinks and social media popularity. 
 Number and volume of transactions done in Ethereum can also be used for Ranking. 
 Presence of ipfs hash can be used as minimum ranking parameter. 
 As of now, number of words and outlinks can also be used as a ranking parameter. 
 
- 3. Search 
-Parse content from webpage and put into  Elasticsearch
+ 3. Search - Parse content from webpage and put into  Elasticsearch
 
- 4. Frontend UI for search engine. 
+ 4. Frontend - UI for search engine. 
 
 ## To do
 
