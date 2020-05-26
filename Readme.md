@@ -1,4 +1,6 @@
-Try the search engine at https://ipfs.sarchy.online or at https://gateway.pinata.cloud/ipfs/Qmf2H94VJjivmEMb1g3KYVd2XVxWWSCuG5ce5ueFnWoEpA If you can access crypto domains, check it at http://sarchy.crypto
+Try the search engine at https://ipfs.sarchy.online or at https://gateway.pinata.cloud/ipfs/Qmf2H94VJjivmEMb1g3KYVd2XVxWWSCuG5ce5ueFnWoEpA 
+
+If you can access crypto domains, check it at http://sarchy.crypto
 
 ## 4 parts of search engine. 
 
