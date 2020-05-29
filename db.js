@@ -27,7 +27,7 @@ app.post('/api/all', (req, res) => {
   const outLinksCount = Number(JSON.parse(reqBody).outLinksCount)
   const charCount = Number(JSON.parse(reqBody).charCount)
   const imgCount = Number(JSON.parse(reqBody).imgCount)
-  if (outLinksCount == 1 && charCount == 1 && imgCount == 1) {
+  if (outLinksCount == charCount == imgCount) {
     let sql = "SELECT * FROM avDomains order by defaultPopularity desc limit " + pageNo * noPerPage + "," + noPerPage;
     let query = connection.query(sql, (err, results) => {
       if (err) throw err;
@@ -35,7 +35,9 @@ app.post('/api/all', (req, res) => {
     });
   }
   else {
-    const orderBy = `(${charCount}*charCount)/100+(${imgCount}*imgCount*10)+(${outLinksCount}+outLinksCount*10)+if(domainTitle='', -2000,0)+if(ethRedirectAddress is null, -100,100) +if(whoIs is null, -50,50) `
+    const orderBy = `(${charCount}*charCount)/100+(${imgCount}*imgCount*10)+(${outLinksCount}+outLinksCount*10)+if(domainTitle="", -2000,0)+if(ethRedirectAddress is null, -100,100) +if(whoIs is null, -50,50)`
+    console.log(orderBy);
+    
     let sql = "SELECT * FROM avDomains order by " + orderBy + " desc limit " + pageNo * noPerPage + "," + noPerPage;
     let query = connection.query(sql, (err, results) => {
       if (err) throw err;
