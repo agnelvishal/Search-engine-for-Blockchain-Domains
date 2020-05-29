@@ -22,12 +22,27 @@ app.post('/api/all', (req, res) => {
     reqBody = key
   });
   const pageNo = Number(JSON.parse(reqBody).pageNo)
-  const noPerPage = 20 
-  let sql = "SELECT * FROM avDomains order by defaultPopularity desc limit "+ pageNo*noPerPage + "," + noPerPage ;
-  let query = connection.query(sql, (err, results) => {
-    if (err) throw err;
-    res.send({ results });
-  });
+  const noPerPage = 20
+
+  const outLinksCount = Number(JSON.parse(reqBody).outLinksCount)
+  const charCount = Number(JSON.parse(reqBody).charCount)
+  const imgCount = Number(JSON.parse(reqBody).imgCount)
+  if (outLinksCount == 1 && charCount == 1 && imgCount == 1) {
+    let sql = "SELECT * FROM avDomains order by defaultPopularity desc limit " + pageNo * noPerPage + "," + noPerPage;
+    let query = connection.query(sql, (err, results) => {
+      if (err) throw err;
+      res.send({ results });
+    });
+  }
+  else {
+    const orderBy = `(${charCount}*charCount)/100+(${imgCount}*imgCount*10)+(${outLinksCount}+outLinksCount*10)+if(domainTitle='', -2000,0)+if(ethRedirectAddress is null, -100,100) +if(whoIs is null, -50,50) `
+    let sql = "SELECT * FROM avDomains order by " + orderBy + " desc limit " + pageNo * noPerPage + "," + noPerPage;
+    let query = connection.query(sql, (err, results) => {
+      if (err) throw err;
+      res.send({ results });
+    });
+  }
+
 });
 
 app.listen(3000, () => {

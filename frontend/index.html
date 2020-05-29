@@ -45,26 +45,77 @@
   <form id="req" action="javascript:void(0);">
     <input type="hidden" id="pageNo" name="pageNo" value="0">
     <h4>
+      <div class="line">
       Here are top IPFS websites sorted by popularity.
-
+      </div>
       <!-- <span> Display as
         <select name="display">
           <option value="cardView" selected>Card View</option>
           <option value="listView">Graph View</option>
-        </select> -->
-
+        </select>
       </span>
-      <div id="avoption">
+    -->
+
+      <div class="line" id="avoption">
         <span>Search for <input type="search" id="search" name="search">.</span>
       </div>
 
+      <div class="line">
+        The weight of each ranking factors is
+        <div>
+          <select name="outLinksCount">
+            <option value="1" selected>1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+          for Number of outlinks in page
+        </div>
+        <div>
+          <select name="charCount">
+            <option value="1" selected>1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+
+          </select>
+          for length of text in page <span style="visibility:hidden">chars </span>
+
+        </div>
+        <div>
+          <select name="imgCount">
+            <option value="1" selected>1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+          for number of images in page <span style="visibility:hidden">i </span>
+        </div>
+      </div>
 
     </h4>
 
 
-    <div id="buttonGroup"> 
-      <input type="submit" value="Load Articles" id="button"> <label for="button"
-        id="loading">Loading
+    <div id="buttonGroup">
+      <input type="submit" value="Load Articles" id="button"> <label for="button" id="loading">Loading
         <span class="spinner">
           <div class="cube1"></div>
           <div class="cube2"></div>
@@ -106,7 +157,7 @@
     </div>
     </div>
   </template>
-  
+
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 

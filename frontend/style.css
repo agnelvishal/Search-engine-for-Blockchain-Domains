@@ -9,7 +9,7 @@ body {
   }
  }
  .topnav {
-  height:4rem;
+  height:5rem;
  }
  .dark .topnav {
   background-color:#1fefef
@@ -34,9 +34,17 @@ body {
  }
  #req {
   text-align:center;
-  line-height:1.5;
-  padding:10px 0
+  line-height:1.3;
+  padding:1px 0 0 0;
+    /* display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height:1.2; */
  }
+
+ .line{
+  margin: 15px 0; 
+}
  .dark #req {
   background-color:#1fefef
  }
