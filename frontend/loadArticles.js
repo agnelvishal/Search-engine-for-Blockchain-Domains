@@ -18,9 +18,9 @@ async function loadArticles(event, pagination) {
     document.querySelector("#loaded").style.display = "None";
     document.querySelector("#button").style.visibility = "hidden";
 
-    // const apiC = await fetch("https://apiIpfs.sarchy.online/api/all", {
-    const apiC = await fetch("http://localhost:3000/api/all", {
-        method: 'POST',
+    // const apiC = await fetch("http://localhost:3000/api/all", {
+    const apiC = await fetch("https://apiIpfs.sarchy.online/api/all", {
+    method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
             // "Content-Type": "application/json" 
