@@ -11,7 +11,7 @@ from newspaper import Config, Article, Source
 from bs4 import BeautifulSoup
 # config = Config()
 # config.MAX_SUMMARY = 1000
-
+import re
 
 def article(text):
     try:
@@ -30,11 +30,21 @@ def article(text):
                 sleep(1)
                 slept += 1
             article.parse()
+
+            # for description
             # article.nlp()
             # print(article.summary[:400])
-            domainDesc = article.text[:270]
-            img = article.top_image
             soup = BeautifulSoup(article.html, "lxml")
+            domainDesc = article.text[:270]
+            desc1 = soup.find(attrs={"property": re.compile(r"description", re.I)})['content']
+            if(len(desc1)<25):
+                domainDesc = desc1
+            desc2 = soup.find(attrs={"name": re.compile(r"description", re.I)})['content']
+            if(len(desc2)<25):
+                domainDesc = desc2
+
+            img = article.top_image
+            
             outLinks = len(soup.find_all('a', href=True))
 
             mariadb_connectionT = mariadb.connect(
