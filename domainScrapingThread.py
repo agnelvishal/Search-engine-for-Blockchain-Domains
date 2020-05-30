@@ -36,12 +36,17 @@ def article(text):
             # print(article.summary[:400])
             soup = BeautifulSoup(article.html, "lxml")
             domainDesc = article.text[:270]
-            desc1 = soup.find(attrs={"property": re.compile(r"description", re.I)})['content']
-            if(len(desc1)<25):
-                domainDesc = desc1
-            desc2 = soup.find(attrs={"name": re.compile(r"description", re.I)})['content']
-            if(len(desc2)<25):
-                domainDesc = desc2
+            
+            desc1 = soup.find(attrs={"property": re.compile(r"description", re.I)})
+            if desc1 is not None:
+                desc1 = desc1['content']
+                if(len(desc1)>25):
+                    domainDesc = desc1
+            desc2 = soup.find(attrs={"name": re.compile(r"description", re.I)})
+            if desc2 is not None:
+                desc2 = desc2['content']
+                if(len(desc2)>25):
+                    domainDesc = desc2
 
             img = article.top_image
             
