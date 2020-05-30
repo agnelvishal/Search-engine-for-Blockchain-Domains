@@ -28,7 +28,7 @@ app.post('/api/all', (req, res) => {
   const charCount = Number(JSON.parse(reqBody).charCount)
   const imgCount = Number(JSON.parse(reqBody).imgCount)
   if (outLinksCount == 1 && charCount == 1 && imgCount == 1) {
-    let sql = "SELECT *, substring(domainDesc,1,270)  as domainDesc2  FROM avDomains order by defaultPopularity desc limit " + pageNo * noPerPage + "," + noPerPage;
+    let sql = "SELECT *, substring(domainDesc,1,200)  as domainDesc2  FROM avDomains order by defaultPopularity desc limit " + pageNo * noPerPage + "," + noPerPage;
     let query = connection.query(sql, (err, results) => {
       if (err) throw err;
       res.send({ results });
