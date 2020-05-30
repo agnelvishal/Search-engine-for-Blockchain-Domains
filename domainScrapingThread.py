@@ -34,7 +34,7 @@ def article(text):
             # print(article.summary[:400])
             domainDesc = article.text[:270]
             img = article.top_image
-            soup = BeautifulSoup(article.html)
+            soup = BeautifulSoup(article.html, "lxml")
             outLinks = len(soup.find_all('a', href=True))
 
             mariadb_connectionT = mariadb.connect(
