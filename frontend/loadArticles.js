@@ -48,7 +48,7 @@ async function loadArticles(event, pagination) {
 
         clone.querySelector("a").href = "https://cloudflare-ipfs.com/ipfs/" + result.ipfsHash
         clone.querySelector(".avtext").textContent = result.domainTitle
-        clone.querySelector(".avBody").textContent = result.domainDesc2
+        clone.querySelector(".avBody").textContent = result.domainDesc2 + " ..."
 
 
         clone.querySelector(".totalPopularity").textContent = result.defaultPopularity
