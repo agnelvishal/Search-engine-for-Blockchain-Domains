@@ -1,196 +1,210 @@
+.row {
+  padding-bottom: 30px;
+  font-size: 1rem;
+  display: flex;
+  flex-flow: row wrap
+}
 
- .row {
-  padding-bottom:30px;
-  font-size:1rem;
-  display:flex;
-  flex-flow:row wrap
- }
+.picked {
+  text-align: center;
+  padding-top: 20px;
+  color: #77d7b9;
+  font-style: italic
+}
 
- .picked {
-  text-align:center;
-  padding-top:20px;
-  color:#77d7b9;
-  font-style:italic
- }
- #insert {
-  margin:50px;
-  font-size:1rem;
-  text-align:center;
-  color:#77d7b9
- }
- .column {
-  flex:1 16rem;
-  max-width:22rem;
-  padding:2em .5em
- }
- .card {
-  position:relative;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  height:100%;
-  background-color:#fff
+#insert {
+  margin: 50px;
+  font-size: 1rem;
+  text-align: center;
+  color: #77d7b9
+}
 
- }
- .light .card {
-  box-shadow:0 4px 6px 0 hsla(0,0%,0%,.2)
- }
+.column {
+  flex: 1 16rem;
+  max-width: 22rem;
+  padding: 2em .5em
+}
 
- .light .card:hover {
-  box-shadow:0 4px 16px 0 hsla(0,0%,0%,.2)
- }
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background-color: #fff
+}
 
- .card a {
-  text-decoration:none
- }
- 
- .container {
-  position:absolute;
-  top:0%;
-  left:0;
-  right:0;
-  overflow:auto;
-  height:1rem;
-  transition:.6s ease;
-  color:#1b2631;
-  background:#1fefef;
-  overflow:hidden;
-  font-size:.8rem;
-  padding:5px;
-  width:25%
- }
- .container:hover {
-  width:100%;
-  height:14rem;
-  background:#1fefef
- }
+.light .card {
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, .2)
+}
 
- .upvote {
+.light .card:hover {
+  box-shadow: 0 4px 16px 0 hsla(0, 0%, 0%, .2)
+}
+
+.card a {
+  text-decoration: none
+}
+
+.container {
+  position: absolute;
+  top: 0%;
+  left: 0;
+  right: 0;
+  overflow: auto;
+  height: 1rem;
+  transition: .6s ease;
+  color: #1b2631;
+  background: #1fefef;
+  overflow: hidden;
+  font-size: .8rem;
+  padding: 5px;
+  width: 25%
+}
+
+.container:hover {
+  width: 100%;
+  height: 14rem;
+  background: #1fefef
+}
+
+.upvote {
   background: mediumspringgreen;
   padding: 10px;
   text-align: center;
-    box-shadow:0 4px 6px 0 hsla(0,0%,0%,.2);
-    cursor:pointer;
-  display:none;
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, .2);
+  cursor: pointer;
+  display: none;
 
 }
- .upvote:hover {
-  box-shadow:0 4px 16px 0 hsla(0,0%,0%,.2)
- }
 
- .upvoted {
+.upvote:hover {
+  box-shadow: 0 4px 16px 0 hsla(0, 0%, 0%, .2)
+}
+
+.upvoted {
   background: #11d7b9;
   padding: 10px;
   text-align: center;
-   cursor:pointer;   
+  cursor: pointer;
 }
 
- .txD
- {
- background-color: wheat;
- display: block;
- text-align: center;
- padding: 10px;
+.txD {
+  background-color: wheat;
+  display: block;
+  text-align: center;
+  padding: 10px;
 }
- .card .totalPopularity {
-  position:absolute;
-  text-align:center;
-  font-weight:600
- }
- .totalPopularity::after {
-  content:" \2605"
- }
- .center-image {
-  height:13rem;
-  width:100%
- }
- .light .center-image {
-  opacity:.9
- }
+
+.card .totalPopularity {
+  position: absolute;
+  text-align: center;
+  font-weight: 600
+}
+
+.totalPopularity::after {
+  content: " \2605"
+}
+
+.center-image {
+  height: 13rem;
+  width: 100%
+}
+
+.light .center-image {
+  opacity: .9
+}
 
 
- .light .center-image:hover {
+.light .center-image:hover {
   opacity: 1;
- }
- 
- .block-with-text {
-  display:block;
-  text-align:center;
-  margin:-4px 0 0;
-  overflow:auto;
-  text-overflow:ellipsis;
-  width:100%;
-  line-height:1.3;
-  font-size:1.2rem;
-  padding-top:8px
- }
- .light .block-with-text {
-  height:3rem;
-  color:#000;
+}
+
+.block-with-text {
+  display: block;
+  text-align: center;
+  margin: -4px 0 0;
+  overflow: auto;
+  text-overflow: ellipsis;
+  width: 100%;
+  line-height: 1.3;
+  font-size: 1.2rem;
+  padding-top: 8px
+}
+
+.light .block-with-text {
+  height: 3rem;
+  color: #000;
   /* background-color:rgba(235,235,235,.5) */
- }
- 
- .block-with-text::after {
-  content:'\2197'
- }
- .light .block-with-text:hover {
-  background:#fff
- }
+}
+
+.block-with-text::after {
+  content: '\2197'
+}
+
+.light .block-with-text:hover {
+  background: #fff
+}
 
 
- .block-with-text-body {
-  display:block;
-  text-align:center;
-  margin:-4px 0 0;
-  overflow:auto;
-  text-overflow:ellipsis;
-  width:100%;
-  padding-top:8px
- }
- .light .block-with-text-body  {
-   height: 8rem;
-  color:#000;
+.block-with-text-body {
+  display: block;
+  text-align: center;
+  margin: -4px 0 0;
+  overflow: auto;
+  text-overflow: ellipsis;
+  width: 100%;
+  padding-top: 8px;
+  height: 9rem;
+  color: rgba(0,0,0,.9);
+  font-size: .9rem;
   /* background-color:rgba(235,235,235,.5) */
- }
+}
 
- .light .block-with-text-body:hover {
-  background:#fff
- }
+.light .block-with-text-body:hover {
+  background: #fff
+}
 
+.avBody {
+  margin: 0 10px;
+}
 
- .meta {
-  display:grid;
-  grid-template-columns:50% 50%;
-  margin-top:20px
- }
- .made {
-  text-align:center;
-  margin:10px;
-  color:rgba(2,200,200,.4)
- }
- .made a {
-  margin:2px;
-  text-decoration:none
- }
- 
- /* #chart-container {
+.meta {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  margin-top: 20px
+}
+
+.made {
+  text-align: center;
+  margin: 10px;
+  color: rgba(2, 200, 200, .4)
+}
+
+.made a {
+  margin: 2px;
+  text-decoration: none
+}
+
+/* #chart-container {
   border-width:5px;
   border-style:solid;
   margin:30px auto 10%
  } */
 
- .fb{
-    background-color:  	rgba(9,89,152,.3);
-  }
-  .searchEngine{
-    background-color:  	rgba(90,255,0,.3);
-  }
-  .reddit
-  {
-    background-color:  	rgba(255,69,0,.5);
-  }
-  .pinterest
-  {
-    background-color:  	rgba(200,35,44,.5);
-  }
+.fb {
+  background-color: rgba(9, 89, 152, .3);
+}
+
+.searchEngine {
+  background-color: rgba(90, 255, 0, .3);
+}
+
+.reddit {
+  background-color: rgba(255, 69, 0, .5);
+}
+
+.pinterest {
+  background-color: rgba(200, 35, 44, .5);
+}
