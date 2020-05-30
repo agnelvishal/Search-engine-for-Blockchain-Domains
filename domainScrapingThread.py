@@ -32,6 +32,7 @@ def article(text):
             article.parse()
             # article.nlp()
             # print(article.summary[:400])
+            domainDesc = article.text[:270]
             img = article.top_image
             soup = BeautifulSoup(article.html)
             outLinks = len(soup.find_all('a', href=True))
@@ -42,11 +43,11 @@ def article(text):
             cursor = mariadb_connectionT.cursor()
 
             if img:
-                cursor.execute("UPDATE `{!s}` set imgLink = {!a} , imgCount = '{:d}', charCount='{:d}', outLinksCount='{:d}', domainTitle={!a}  where ipfsHash='{!s}'".format(
-                    domain, img, len(article.imgs), len(article.text),outLinks,  article.title, ipfsHash))
+                cursor.execute("UPDATE `{!s}` set imgLink = {!a} , imgCount = '{:d}', charCount='{:d}', outLinksCount='{:d}', domainTitle={!a} , domainDesc={!a}  where ipfsHash='{!s}'".format(
+                    domain, img, len(article.imgs), len(article.text), outLinks,  article.title, domainDesc, ipfsHash))
             else:
-                cursor.execute("UPDATE `{!s}` set charCount='{:d}',outLinksCount='{:d}', domainTitle={!a} where ipfsHash='{!s}'".format(
-                    domain, len(article.text), outLinks,  article.title, ipfsHash))
+                cursor.execute("UPDATE `{!s}` set charCount='{:d}',outLinksCount='{:d}', domainTitle={!a} , domainDesc={!a} where ipfsHash='{!s}'".format(
+                    domain, len(article.text), outLinks,  article.title, domainDesc, ipfsHash))
             mariadb_connectionT.commit()
         except mariadb.Error as err:
             print("db error", err)

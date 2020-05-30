@@ -8,6 +8,13 @@ body {
    font-size:1.3rem;
   }
  }
+
+ @media screen and (max-width:500px) {
+  .topnav {
+       margin-bottom: 60px
+  }
+ }
+
  .topnav {
   height:5rem;
  }
@@ -26,8 +33,9 @@ body {
   padding:10px;
   font-style:italic;
   font-size:1.2rem;
-   margin-left: 10px;
    cursor: pointer;
+   display: inline-block;
+   margin: 3px;
  }
  .topnav a:hover {
   background:#77d7b9
