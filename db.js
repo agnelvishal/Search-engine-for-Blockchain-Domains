@@ -91,7 +91,7 @@ console.log(req);
   const vote = Number(req.query.vote)
 
 
-    let sql = `UPDATE avDomains SET manualRating = manualRating + ${vote} where cryptoDomain= ${cryptoDomain}`;
+    let sql = `UPDATE avDomains SET manualRating = manualRating + ${vote} where cryptoDomain= '${cryptoDomain}'`;
     let query = connection.query(sql, (err, results) => {
       if (err) throw err;
       res.send({ results });
