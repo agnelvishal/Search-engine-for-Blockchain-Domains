@@ -87,8 +87,8 @@ app.get('/api/vote', (req, res) => {
 console.log(req);
 
 
-  const cryptoDomain = req.body.cryptoDomain
-  const vote = Number(req.body.vote)
+  const cryptoDomain = req.query.cryptoDomain
+  const vote = Number(req.query.vote)
 
 
     let sql = `UPDATE avDomains SET manualRating = manualRating + ${vote} where cryptoDomain= ${cryptoDomain}`;
