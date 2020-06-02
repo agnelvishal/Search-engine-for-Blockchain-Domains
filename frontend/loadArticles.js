@@ -113,12 +113,13 @@ async function loadSearchApi(data) {
             const apiD = await apiC.json();
             const results = apiD.results;
 
-        console.log("inside");
         
         
             var i = 0
             for (let result of results) {
+        console.log(result);
         
+
                 var template = document.querySelector('#template');
                 var clone = document.importNode(template.content, true);
                 clone.querySelector("a").id = i
