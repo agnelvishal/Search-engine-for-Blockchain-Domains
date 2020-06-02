@@ -84,10 +84,9 @@ app.post('/api/search', (req, res) => {
 app.get('/api/vote', (req, res) => {
 
   res.setHeader('Access-Control-Allow-Origin', '*');
-  var reqBody
-  Object.keys(req.body).forEach(function (key) {
-    reqBody = key
-  });
+console.log(req);
+
+
   const cryptoDomain = req.cryptoDomain
   const vote = Number(req.vote)
 
