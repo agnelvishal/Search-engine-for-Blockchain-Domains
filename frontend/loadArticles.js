@@ -7,6 +7,7 @@ async function loadArticles(event, pagination) {
     const data = Object.fromEntries(new FormData(form).entries());
 
     if (document.querySelector("#search").value != "") {
+        loadSearchApi(data)
         loadIpfsApi(data)
         return
     }
@@ -18,7 +19,8 @@ async function loadArticles(event, pagination) {
     document.querySelector("#loaded").style.display = "None";
     document.querySelector("#button").style.visibility = "hidden";
 
-    // const apiC = await fetch("http://localhost:3000/api/all", {
+    // const apiC = await fetch("https://apiIpfs.sarchy.online/api/all", {
+    //  const apiC = await fetch("http://localhost:3000/api/all", {
     const apiC = await fetch("https://apiIpfs.sarchy.online/api/all", {
     method: 'POST',
         headers: {
@@ -47,7 +49,7 @@ async function loadArticles(event, pagination) {
         clone.querySelector("a").id = i
 
         clone.querySelector("a").href = "https://cloudflare-ipfs.com/ipfs/" + result.ipfsHash
-        clone.querySelector(".avtext").textContent = result.domainTitle
+        clone.querySelector(".avtext").textContent = result.domainTitle2
         clone.querySelector(".avBody").textContent = result.domainDesc2 + " ..."
 
 
@@ -77,7 +79,7 @@ async function loadIpfsApi() {
 
     var i = 0
     for (let result of results) {
-        console.log(result);
+        // console.log(result);
 
         var template = document.querySelector('#template');
         var clone = document.importNode(template.content, true);
@@ -92,6 +94,50 @@ async function loadIpfsApi() {
         host.appendChild(clone);
         i++
     }
+
+}
+
+async function loadSearchApi(data) {
+    // const apiC = await fetch("https://apiIpfs.sarchy.online/api/search", {
+        // const apiC = await fetch("http://localhost:3000/api/search", {
+    const apiC = await fetch("https://apiIpfs.sarchy.online/api/search", {
+            method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                    // "Content-Type": "application/json" 
+                },
+                body: JSON.stringify(data), // convert Js object to a string
+        
+            });
+        
+            const apiD = await apiC.json();
+            const results = apiD.results;
+
+        console.log("inside");
+        
+        
+            var i = 0
+            for (let result of results) {
+        
+                var template = document.querySelector('#template');
+                var clone = document.importNode(template.content, true);
+                clone.querySelector("a").id = i
+        
+                clone.querySelector("a").href = "https://cloudflare-ipfs.com/ipfs/" + result.ipfsHash
+                clone.querySelector(".avtext").textContent = result.domainTitle2
+                clone.querySelector(".avBody").textContent = result.domainDesc2 + " ..."
+        
+        
+                clone.querySelector(".totalPopularity").textContent = result.defaultPopularity
+                clone.querySelector(".charCount  > p:nth-child(2) ").textContent = result.charCount
+                clone.querySelector(".imgCount  > p:nth-child(2) ").textContent = result.imgCount
+                clone.querySelector(".outLinksCount  > p:nth-child(2) ").textContent = result.outLinksCount
+        
+        
+                var host = document.querySelector('#row');
+                host.appendChild(clone);
+                i++
+            }
 
 }
 

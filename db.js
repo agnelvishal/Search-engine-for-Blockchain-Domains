@@ -28,7 +28,7 @@ app.post('/api/all', (req, res) => {
   const charCount = Number(JSON.parse(reqBody).charCount)
   const imgCount = Number(JSON.parse(reqBody).imgCount)
   if (outLinksCount == 1 && charCount == 1 && imgCount == 1) {
-    let sql = "SELECT *, substring(domainDesc,1,200)  as domainDesc2  FROM avDomains order by defaultPopularity desc limit " + pageNo * noPerPage + "," + noPerPage;
+    let sql = `SELECT *, substring(domainDesc,1,200)  as domainDesc2, substring(domainTitle,1,70)  as domainTitle2  FROM avDomains order by defaultPopularity desc limit ${pageNo * noPerPage}, ${noPerPage}`;
     let query = connection.query(sql, (err, results) => {
       if (err) throw err;
       res.send({ results });
@@ -37,7 +37,42 @@ app.post('/api/all', (req, res) => {
   else {
     const orderBy = `(${charCount}*charCount)/100+(${imgCount}*imgCount*10)+(${outLinksCount}+outLinksCount*10)+if(domainTitle="", -2000,0)+if(ethRedirectAddress is null, -100,100) +if(whoIs is null, -50,50)`
     // console.log(orderBy);
-    let sql = "SELECT *, substring(domainDesc,1,270)  as domainDesc2  FROM avDomains order by " + orderBy + " desc limit " + pageNo * noPerPage + "," + noPerPage;
+    let sql = ` SELECT *, substring(domainDesc,1,200)  as domainDesc2, substring(domainTitle,1,70)  as domainTitle2  FROM avDomains order by ${orderBy} desc limit ${pageNo * noPerPage} , ${noPerPage}` ;
+    let query = connection.query(sql, (err, results) => {
+      if (err) throw err;
+      res.send({ results });
+    });
+  }
+
+});
+
+
+app.post('/api/search', (req, res) => {
+
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  var reqBody
+  Object.keys(req.body).forEach(function (key) {
+    reqBody = key
+  });
+  const pageNo = Number(JSON.parse(reqBody).pageNo)
+  const noPerPage = 10  
+
+  const outLinksCount = Number(JSON.parse(reqBody).outLinksCount)
+  const charCount = Number(JSON.parse(reqBody).charCount)
+  const imgCount = Number(JSON.parse(reqBody).imgCount)
+  const search = String(JSON.parse(reqBody).search)
+
+  if (outLinksCount == 1 && charCount == 1 && imgCount == 1) {
+    let sql = `SELECT *, substring(domainDesc,1,200)  as domainDesc2, substring(domainTitle,1,70)  as domainTitle2  FROM avDomains where cryptoDomain like '%${search}%' or domainDesc like '%${search}%' or domainType like '%${search}%' order by defaultPopularity desc limit ${pageNo * noPerPage}, ${noPerPage}`;
+    let query = connection.query(sql, (err, results) => {
+      if (err) throw err;
+      res.send({ results });
+    });
+  }
+  else {
+    const orderBy = `(${charCount}*charCount)/100+(${imgCount}*imgCount*10)+(${outLinksCount}+outLinksCount*10)+if(domainTitle="", -2000,0)+if(ethRedirectAddress is null, -100,100) +if(whoIs is null, -50,50)`
+    // console.log(orderBy);
+    let sql = ` SELECT *, substring(domainDesc,1,200)  as domainDesc2, substring(domainTitle,1,70)  as domainTitle2  FROM avDomains where cryptoDomain like '%${search}%' or domainDesc like '%${search}%' or domainType like '%${search}%' order by ${orderBy} desc limit ${pageNo * noPerPage} , ${noPerPage}`;
     let query = connection.query(sql, (err, results) => {
       if (err) throw err;
       res.send({ results });
