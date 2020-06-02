@@ -68,6 +68,9 @@ async function loadArticles(event, pagination) {
 }
 
 async function loadIpfsApi() {
+
+
+
     let avQuery = document.querySelector("#search").value;
 
     const apiC = await fetch("https://api.ipfs-search.com/v1/search?q=" + avQuery);
@@ -98,6 +101,13 @@ async function loadIpfsApi() {
 }
 
 async function loadSearchApi(data) {
+
+    document.querySelector("#loading").style.display = "";
+    // document.querySelector("#loading").style.animation = "";
+    document.querySelector("#loaded").style.display = "None";
+    document.querySelector("#button").style.visibility = "hidden";
+
+
     // const apiC = await fetch("https://apiIpfs.sarchy.online/api/search", {
         // const apiC = await fetch("http://localhost:3000/api/search", {
     const apiC = await fetch("https://apiIpfs.sarchy.online/api/search", {
@@ -113,7 +123,11 @@ async function loadSearchApi(data) {
             const apiD = await apiC.json();
             const results = apiD.results;
 
-        
+          document.querySelector("#loading").style.display = "None";
+    document.querySelector("#loaded").style.display = "";
+
+    document.querySelector("#loadMore").style.visibility = "visible";
+    document.querySelector("body > div.picked").style.display = "block"  
         
             var i = 0
             for (let result of results) {
