@@ -78,7 +78,27 @@ app.post('/api/search', (req, res) => {
       res.send({ results });
     });
   }
+});
 
+
+app.get('/api/vote', (req, res) => {
+
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  var reqBody
+  Object.keys(req.body).forEach(function (key) {
+    reqBody = key
+  });
+  const cryptoDomain = req.cryptoDomain
+  const vote = Number(req.vote)
+
+
+    let sql = `UPDATE avDomains SET manualRating = manualRating + ${vote} where cryptoDomain= ${cryptoDomain}`;
+    let query = connection.query(sql, (err, results) => {
+      if (err) throw err;
+      res.send({ results });
+    });
+  
+  
 });
 
 app.listen(3000, () => {
