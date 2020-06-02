@@ -17,11 +17,9 @@ As of now, number of words and outlinks can also be used as a ranking parameter.
 
 ## To do
 
-1. Ability to sort pages by using different parameters from frontend. 
-2. Display webpage summary in frontend. 
-3. Will slowly increase decentralization by moving the data to blockchain and using smart contracts.
-4. Option to upvote pages using metamask auth.
-5. Crawl from Zil blockchain
+1. Remove bugs while searching
+2. Will slowly increase decentralization by moving the data to blockchain and using smart contracts.
+3. Ability to upvote pages using metamask auth
 
 ## Steps to get domain names from unstoppable domains blockchain 
 

@@ -1,7 +1,7 @@
 const fetch = require('node-fetch');
-const details = require('./details.js');
+const details = require('../details.js');
 const InputDataDecoder = require('ethereum-input-data-decoder');
-const toDb = require('./avDb.js')
+const toDb = require('../avDb.js')
 
 
 apiKey = details.etherScanAPI

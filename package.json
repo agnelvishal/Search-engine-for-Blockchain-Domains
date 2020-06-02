@@ -1,7 +1,7 @@
 {
-  "name": "cryptoDomainsSearch",
+  "name": "customata",
   "version": "1.0.0",
-  "description": "",
+  "description": "crypto-domains-search",
   "main": "app.js",
   "dependencies": {
     "ethereum-input-data-decoder": "^0.3.0",
