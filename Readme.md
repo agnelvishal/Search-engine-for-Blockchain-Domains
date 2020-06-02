@@ -6,12 +6,11 @@ If you can access crypto domains, check it at http://sarchy.crypto
 
  1. Crawling - Get domain names from unstoppabledomains Ethereum and Zil blockchain. For crawling IPFS pages, Yacy 2 is used. Scrappy and apache nutch were considered. 
 
- 2. Assessing popularity of domain. - Standard page rank like techniques using backlinks and social media popularity. 
-Number and volume of transactions done in Ethereum can also be used for Ranking. 
-Presence of ipfs hash can be used as minimum ranking parameter. 
-As of now, number of words and outlinks can also be used as a ranking parameter. 
+ 2. Assessing popularity of domain. - Standard page rank like techniques using backlinks and social media popularity can also be used for Ranking. 
+Presence of ipfs hash is used as minimum ranking parameter. 
+As of now, number of words, number of images, volume of ethereum transactions and outlinks are used as ranking parameters.
 
- 3. Search - Parse content from webpage and put into  Elasticsearch
+ 3. Search - Parse content from webpage and put into Elasticsearch
 
  4. Frontend - UI for search engine. 
 
@@ -25,7 +24,7 @@ As of now, number of words and outlinks can also be used as a ranking parameter.
 
 1. Transactions details from https://etherscan.io/address/0xb485d89aba096fc9f117fa28b80dc8aac7971049 can get us Transaction Hashes. That transaction hash has info about domain name. 
 2. From domain name, get ipfs hash from Unstoppable Domains API.
-3. FRom ipfs hash, get webpage contents.
+3. From ipfs hash, get webpage contents.
 
  Finding ipfs hash from crypto domain can be done in two ways.
 
