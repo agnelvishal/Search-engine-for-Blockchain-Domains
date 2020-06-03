@@ -87,7 +87,7 @@ function fromDbAll() {
         var connection = mysql.createConnection(connectionD)
         try {
 
-            let sql = `select *  from avDomains `;
+            let sql = `select *  from avDomains order by defaultPopularity desc; `;
             // console.log(sql);
 
             connection.connect()

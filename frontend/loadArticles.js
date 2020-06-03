@@ -49,7 +49,7 @@ async function loadArticles(event, pagination) {
         clone.querySelector("a").id = i
 
         clone.querySelector("a").href = "https://cloudflare-ipfs.com/ipfs/" + result.ipfsHash
-        clone.querySelector(".avtext").textContent = result.domainTitle2
+        clone.querySelector(".avtext").textContent = result.cryptoDomain + " : " + result.domainTitle2
         clone.querySelector(".avBody").textContent = result.domainDesc2 + " ..."
 
 

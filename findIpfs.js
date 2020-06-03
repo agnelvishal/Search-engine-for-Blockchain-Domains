@@ -4,8 +4,8 @@ const avDb = require('./avDb.js')
 
 async function main() {
 
-    // cryptoDomains = await avDb.fromDbAll();
-    cryptoDomains = await avDb.fromDb("cryptoDomain", "tokenOwnerAddress", true);
+     cryptoDomains = await avDb.fromDbAll();
+   // cryptoDomains = await avDb.fromDb("cryptoDomain", "tokenOwnerAddress", true);
     //console.log(cryptoDomains);
 
     for (i = 1; i < cryptoDomains.length; i++) {
