@@ -26,8 +26,15 @@ async function main() {
             let eth = json.addresses.ETH
             let type = json.meta.type
             let whoIs = json.whois.email
+            let gundb = json.gundb.username
+
+
             if (whoIs != null || whoIs != "") {
                 avDb.toDbUpdate("whoIs", whoIs, "cryptoDomain", cryptoDomain)
+            }
+
+            if (gundb != null || gundb != "") {
+                avDb.toDbUpdate("gundb", gundb, "cryptoDomain", cryptoDomain)
             }
 
             avDb.toDbUpdate("ipfsHash", ipfs, "cryptoDomain", cryptoDomain)
