@@ -27,22 +27,26 @@ app.post('/api/all', (req, res) => {
   const outLinksCount = Number(JSON.parse(reqBody).outLinksCount)
   const charCount = Number(JSON.parse(reqBody).charCount)
   const imgCount = Number(JSON.parse(reqBody).imgCount)
-  if (outLinksCount == 1 && charCount == 1 && imgCount == 1) {
-    let sql = `SELECT *, substring(domainDesc,1,200)  as domainDesc2, substring(domainTitle,1,50)  as domainTitle2  FROM avDomains order by defaultPopularity desc limit ${pageNo * noPerPage}, ${noPerPage}`;
-    let query = connection.query(sql, (err, results) => {
-      if (err) throw err;
-      res.send({ results });
-    });
+  const isGundb = Number(JSON.parse(reqBody).isGundb)
+
+  let gunDb = ``
+  if (isGundb) {
+    gunDb = `where gundb is not null`
   }
-  else {
-    const orderBy = `(${charCount}*charCount)/100+(${imgCount}*imgCount*10)+(${outLinksCount}+outLinksCount*10)+if(domainTitle="", -2000,0)+if(ethRedirectAddress is null, -100,100) +if(whoIs is null, -50,50) + manualRating`
-    // console.log(orderBy);
-    let sql = ` SELECT *, substring(domainDesc,1,200)  as domainDesc2, substring(domainTitle,1,50)  as domainTitle2  FROM avDomains order by ${orderBy} desc limit ${pageNo * noPerPage} , ${noPerPage}` ;
-    let query = connection.query(sql, (err, results) => {
-      if (err) throw err;
-      res.send({ results });
-    });
-  }
+
+  let orderBy;
+
+  if (outLinksCount == 1 && charCount == 1 && imgCount == 1)
+    orderBy = `order by defaultPopularity desc`
+  else
+    orderBy = `order by (${charCount}*charCount)/100+(${imgCount}*imgCount*10)+(${outLinksCount}+outLinksCount*10)+if(domainTitle="", -2000,0)+if(ethRedirectAddress is null, -100,100) +if(whoIs is null, -50,50) + manualRating desc`
+
+
+  let sql = `SELECT *, substring(domainDesc,1,200)  as domainDesc2, substring(domainTitle,1,50)  as domainTitle2  FROM avDomains ${gunDb} ${orderBy} limit ${pageNo * noPerPage}, ${noPerPage}`;
+  let query = connection.query(sql, (err, results) => {
+    if (err) throw err;
+    res.send({ results });
+  });
 
 });
 
@@ -55,7 +59,7 @@ app.post('/api/search', (req, res) => {
     reqBody = key
   });
   const pageNo = Number(JSON.parse(reqBody).pageNo)
-  const noPerPage = 10  
+  const noPerPage = 10
 
   const outLinksCount = Number(JSON.parse(reqBody).outLinksCount)
   const charCount = Number(JSON.parse(reqBody).charCount)
@@ -84,20 +88,20 @@ app.post('/api/search', (req, res) => {
 app.get('/api/vote', (req, res) => {
 
   res.setHeader('Access-Control-Allow-Origin', '*');
-console.log(req);
+  console.log(req);
 
 
   const cryptoDomain = req.query.cryptoDomain
   const vote = Number(req.query.vote)
 
 
-    let sql = `UPDATE avDomains SET manualRating = manualRating + ${vote} where cryptoDomain= '${cryptoDomain}'`;
-    let query = connection.query(sql, (err, results) => {
-      if (err) throw err;
-      res.send({ results });
-    });
-  
-  
+  let sql = `UPDATE avDomains SET manualRating = manualRating + ${vote} where cryptoDomain= '${cryptoDomain}'`;
+  let query = connection.query(sql, (err, results) => {
+    if (err) throw err;
+    res.send({ results });
+  });
+
+
 });
 
 app.listen(3000, () => {
