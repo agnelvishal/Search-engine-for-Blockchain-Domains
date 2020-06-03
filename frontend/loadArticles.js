@@ -85,7 +85,12 @@ async function loadIpfsApi() {
         clone.querySelector("a").id = i
 
         clone.querySelector("a").href = "https://cloudflare-ipfs.com/ipfs/" + result.hash
-        clone.querySelector(".avtext").innerHTML = result.title
+        
+        let title = result.title
+        if (result.title.split(" ")[0].length>30)
+        title = result.title.substring(0,30);
+                
+        clone.querySelector(".avtext").innerHTML = title
 
         clone.querySelector(".totalPopularity").textContent = result.score
 
