@@ -1,16 +1,16 @@
-Try the search engine at https://ipfs.sarchy.online or at https://gateway.pinata.cloud/ipfs/QmbCWLNbmRvyipMcri6rbfhqWaPMcKSqJcVDvWZ4o2VKJq/ 
+Try the search engine at https://ipfs.sarchy.online or at https://gateway.pinata.cloud/ipfs/QmPse2Zoo3njo3P2tMY5RLWvVhczZruG6zMi4Q8YEkZ3FE
 
 If you can access crypto domains, check it at http://sarchy.crypto
 
-## Description of the search engine.
+## Unique Feature of the search engine.
 
 In this search engine, one can sort webpages by user-defined ranking factors.
-For example, one can increase the ranking for webpages with images.
+For example, the user can increase the ranking for webpages with images.
 One can even select unstoppable domains which have gundb chat enabled. 
 
 This way, every user can set their own ranking algorithm instead of Google deciding the ranking algorithm for the whole world. This will stop data manipulation by monopolies and promote decentralization.
 
-## 4 parts of search engine.
+## 4 parts of a search engine.
 
  1. Crawling - Get domain names from unstoppabledomains Ethereum and Zil blockchain. For crawling IPFS pages, Yacy 2 is used. Scrappy and apache nutch were considered.
 
