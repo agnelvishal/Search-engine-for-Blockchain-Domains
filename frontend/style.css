@@ -102,7 +102,7 @@ body {
  }
  input:hover,
  select:hover {
-  background-color:rgba(119,215,185,.5)
+  background-color:rgba(119,215,185,.2)
  }
  input[type=number] {
   width:55px
