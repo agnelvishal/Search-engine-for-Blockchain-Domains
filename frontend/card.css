@@ -36,11 +36,11 @@
 }
 
 .light .card {
-  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, .2)
+  box-shadow: 1px 0px 6px 0px hsla(0, 0%, 0%, .2)
 }
 
 .light .card:hover {
-  box-shadow: 0 4px 16px 0 hsla(0, 0%, 0%, .2)
+  box-shadow: 1px 4px 16px 0 hsla(0, 0%, 0%, .2)
 }
 
 .card a {
@@ -80,7 +80,7 @@
 }
 
 .upvote:hover {
-  box-shadow: 0 4px 16px 0 hsla(0, 0%, 0%, .2)
+  box-shadow: 2px 6px 16px 2px hsla(0, 0%, 0%, .2);
 }
 
 .upvoted {
