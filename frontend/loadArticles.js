@@ -49,6 +49,7 @@ async function loadArticles(event, pagination) {
         clone.querySelector("a").id = i
 
         clone.querySelector("a").href = "https://cloudflare-ipfs.com/ipfs/" + result.ipfsHash
+        clone.querySelector("#upvote").dataset.domain = result.cryptoDomain
         clone.querySelector(".avtext").textContent = result.cryptoDomain + " : " + result.domainTitle2
         clone.querySelector(".avBody").textContent = result.domainDesc2 + " ..."
 
@@ -82,6 +83,8 @@ async function loadIpfsApi() {
 
         var template = document.querySelector('#template');
         var clone = document.importNode(template.content, true);
+        clone.querySelector("#upvote").dataset.domain = result.hash
+
         clone.querySelector("a").id = i
 
         clone.querySelector("a").href = "https://cloudflare-ipfs.com/ipfs/" + result.hash
@@ -138,6 +141,8 @@ async function loadSearchApi(data) {
         var template = document.querySelector('#template');
         var clone = document.importNode(template.content, true);
         clone.querySelector("a").id = i
+
+        clone.querySelector("#upvote").dataset.domain = result.cryptoDomain
 
         clone.querySelector("a").href = "https://cloudflare-ipfs.com/ipfs/" + result.ipfsHash
         clone.querySelector(".avtext").textContent = result.cryptoDomain + " : " + result.domainTitle2

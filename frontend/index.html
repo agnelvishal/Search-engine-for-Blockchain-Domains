@@ -56,13 +56,19 @@
   <div class="topnav"> <img alt="logo" src="logoColor120.png" width="40" height="40">
     <a href="https://www.condense.press/blog?ref=main"> Blog↗</a>
     <a href="https://bit.ly/blockchaindomainsreferral"> Get your blockdomain domain here ↗</a>
+<!-- <div> <label for="email">Enter your email:</label>
 
+  <input type="email" id="email"
+         size="10" required placeholder="">
+         <button type="submit">Subscribe to Newsletter</button>
+
+   </div> -->
   </div>
   <form id="req" action="javascript:void(0);">
     <input type="hidden" id="pageNo" name="pageNo" value="0">
     <h4>
       <div class="line">
-      Here are top IPFS websites sorted by popularity.
+      Here are top blockchain and IPFS websites sorted by popularity.
       </div>
       <!-- <span> Display as
         <select name="display">
@@ -180,7 +186,7 @@
             </div>
           </div>
         </a></div>
-
+        <div onload="upvoteT(this)" onclick="upvotefn(this)" id="upvote" class="upvote" data-address="" style="display: block;"> Upvote</div>
     </div>
     </div>
   </template>
@@ -190,8 +196,24 @@
 
   <script defer src="loadArticles.js"></script>
 
+<script src="upvotefn.js"></script>
+<script>
+  	window.addEventListener('load', function () {
+		// Check if Web3 has been injected by the browser:
+		if (typeof web3 !== 'undefined') {
+			window.web3 = new Web3(ethereum);
+			console.log('You have web3');
+			ethereum.enable().then(console.log('You have logged in from metamask'));
+		} else {
+			console.log('You DONT HAVE Metamask or similar tool. No problem, we shall try using Torus');
+			(async () => {
+				await import('https://app.tor.us/v0.1.2/embed.min.js')
+			})()
 
-
+		}
+	}
+	);
+</script>
   <div class="topnav loadMore">
     <a id="loadMore"> Load more </a>
   </div>

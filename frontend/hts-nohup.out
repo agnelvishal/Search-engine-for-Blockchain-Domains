@@ -1,0 +1,7 @@
+13:04:32	Warning: 	Unexpected socket error during pre-loop
+13:04:32	Error: 	"Receive Error" (-4) after 2 retries at link www.priya-publications.com/robots.txt (from primary/primary)
+13:04:32	Warning: 	File not added due to mirror cancel: www.priya-publications.com/
+13:04:32	Error: 	"mirror stopped by user" (-1) at link www.priya-publications.com/ (from primary/primary)
+13:04:32	Warning: 	No data seems to have been transferred during this session! : restoring previous one!
+Done.
+Thanks for using HTTrack!
