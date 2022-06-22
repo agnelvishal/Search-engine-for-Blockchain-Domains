@@ -2,7 +2,7 @@ mysql==0.0.2
 mysql-connector==2.2.9
 networkx==2.3
 newspaper3k==0.2.8
-numpy==1.17.0
+numpy==1.22.0
 astroid==2.1.0
 autopep8==1.4.3
 beautifulsoup4==4.6.3
